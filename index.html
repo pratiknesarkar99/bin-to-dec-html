@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin2Dec</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Bin2Dec</h1>
+            <p class="subtitle">Enter up to 8 binary digits (0s and 1s)</p>
+
+            <input id="binInput" type="text" placeholder="00000000" autocomplete="off" spellcheck="false" />
+            <p class="error" id="errorMsg"></p>
+
+            <p class="result-label">Decimal value</p>
+            <p class="result-value" id="resultVal">0</p>
+
+            <div class="breakdown" id="breakdown" style="display:none;">
+                <p class="breakdown-label">Bit breakdown</p>
+                <div class="bits-row" id="bitsRow"></div>
+            </div>
+
+            <button class="clear-btn" onclick="clearAll()">Clear</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
