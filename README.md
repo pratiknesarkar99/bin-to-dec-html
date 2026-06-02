@@ -2,6 +2,8 @@
 
 A simple binary-to-decimal converter built with plain HTML, CSS, and JavaScript.
 
+App made for the challenge [App Ideas](https://github.com/florinpop17/app-ideas)
+
 ## Files
 
 - `index.html` — The main page markup that contains the input field, result display, breakdown panel, and clear button.
