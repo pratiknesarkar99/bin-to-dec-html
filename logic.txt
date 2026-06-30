@@ -1,0 +1,45 @@
+Problem statement:
+Given a string of binary digits (0s and 1s), up to 8 characters long, convert it to its decimal equivalent.
+
+Constraints:
+- No arrays allowed to store the digits
+- Each digit's place value must be calculated using a single mathematical function (here, exponentiation: 2^position)
+
+Breaking down the problem:
+Binary is a positional number system, same idea as decimal. In decimal, the number present a value based on where it sits. present a value based on where it sits, just with base 2 instead of base 10.
+
+For the string "101":
+CharacterPosition (right to left, starting at 0)Place value1 (leftmost)22² = 4012¹ = 21 (rightmost)02⁰ = 1
+So 101 = 4 + 0 + 1 = 5.
+
+The core challenge: 
+The string is indexed left to right (i = 0 is the leftmost character), but binary place value counts right to left (rightmost character is position 0). You need to convert between these two indexing systems, and that's it. There's no other trick here.
+
+Pseudocode:
+function convert(binaryString):
+    if binaryString is empty:
+        return 0
+
+    if binaryString contains anything other than '0' or '1':
+        return error
+
+    decimal = 0
+    length = length of binaryString
+
+    for i from 0 to length - 1:
+        digit = numeric value of binaryString[i]
+        position = length - 1 - i
+        decimal = decimal + (digit * 2^position)
+
+    return decimal
+
+That's the whole algorithm. Validate input, loop once, accumulate a sum.
+
+Complexity analysis:
+Time complexity: O(n), where n is the length of the binary string (max 8 in this case, but the logic generalizes).
+Loop through the string exactly once, and inside the loop you do constant-time work per character (parse a digit, compute a power, multiply, add). No nested loops, no repeated passes. One pass, linear time.
+Math.pow(2, position) is typically treated as O(1) for fixed-size exponents like this (small integers), so it doesn't change the overall complexity.
+Space complexity: O(1), constant.
+
+I am not storing the digits in any data structure (that's literally a constraint of this problem). Just keeping a running total (decimal) and a loop counter (i). Regardless of whether the input is 1 character or 8 characters, you use the same fixed amount of memory.
+This is actually a nice example of why the "no arrays" constraint matters pedagogically. If you'd been allowed to use an array, a more common beginner pattern is to split the string into an array of digits first, then loop over that array. Functionally similar result, but it forces you to think about whether you actually need that intermediate structure or whether you can compute the answer directly off the string, which is the more memory-efficient approach.
